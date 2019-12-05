@@ -99,4 +99,6 @@ object Settings {
 
   lazy val day3Settings = Seq()
 
+  lazy val day4Settings = Seq()
+
 }

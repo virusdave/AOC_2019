@@ -18,6 +18,11 @@ lazy val day3 = (project in file("day3"))
   .settings(Settings.day3Settings: _*)
   .settings(libraryDependencies ++= day3Dependencies.toSeq)
 
+lazy val day4 = (project in file("day4"))
+  .settings(Settings.settings: _*)
+  .settings(Settings.day4Settings: _*)
+  .settings(libraryDependencies ++= day4Dependencies.toSeq)
+
 lazy val all = (project in file("all"))
   .settings(Settings.settings: _*)
   .settings(Settings.allSettings: _*)
@@ -25,6 +30,7 @@ lazy val all = (project in file("all"))
     day1,
     day2,
     day3,
+    day4,
   )
   .configs(Test)
 
@@ -33,6 +39,7 @@ lazy val root = (project in file("."))
     day1,
     day2,
     day3,
+    day4,
 
     all,
   )

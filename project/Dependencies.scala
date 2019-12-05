@@ -96,6 +96,11 @@ object Dependencies {
         Libraries.Breeze,
       )
 
+  val day4Dependencies: Set[ModuleID] =
+    commonDependencies ++
+      Set(
+      )
+
   val allDependencies: Set[ModuleID] =
     commonDependencies ++
       Set(
