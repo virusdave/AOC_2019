@@ -8,7 +8,7 @@ object Settings {
   lazy val settings = Seq(
     organization := "codekata2018",
     version := "0.0.1" + sys.props.getOrElse("buildNumber", default="0-SNAPSHOT"),
-    scalaVersion := "2.12.7",
+    scalaVersion := "2.13.3",
     publishMavenStyle := true,
     publishArtifact in Test := false,
 
@@ -32,8 +32,8 @@ object Settings {
       "-unchecked",                        // Enable additional warnings where generated code depends on assumptions.
       "-Xcheckinit",                       // Wrap field accessors to throw an exception on uninitialized access.
       "-Xfatal-warnings",                  // Fail the compilation if there are any warnings.
-      "-Xfuture",                          // Turn on future language features.
-      "-Xlint:by-name-right-associative",  // By-name parameter of right associative operator.
+//      "-Xfuture",                          // Turn on future language features.
+//      "-Xlint:by-name-right-associative",  // By-name parameter of right associative operator.
       //     TODO 2.12.X
       //    "-Xlint:constant",                   // Evaluation of a constant arithmetic expression results in an error.
       "-Xlint:delayedinit-select",         // Selecting member of DelayedInit.
@@ -41,7 +41,7 @@ object Settings {
       "-Xlint:inaccessible",               // Warn about inaccessible types in method signatures.
       "-Xlint:infer-any",                  // Warn when a type argument is inferred to be `Any`.
       "-Xlint:missing-interpolator",       // A string literal appears to be missing an interpolator id.
-      "-Xlint:nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
+//      "-Xlint:nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
       "-Xlint:nullary-unit",               // Warn when nullary methods return Unit.
       "-Xlint:option-implicit",            // Option.apply used implicit view.
       "-Xlint:package-object-classes",     // Class or object defined in package object.
@@ -49,15 +49,15 @@ object Settings {
       "-Xlint:private-shadow",             // A private field (or class parameter) shadows a superclass field.
       "-Xlint:stars-align",                // Pattern sequence wildcard must align with sequence component.
       "-Xlint:type-parameter-shadow",      // A local type parameter shadows a type already in scope.
-      "-Xlint:unsound-match",              // Pattern match may not be typesafe.
-      "-Ypartial-unification",             // Enable partial unification in type constructor inference
+//      "-Xlint:unsound-match",              // Pattern match may not be typesafe.
+//      "-Ypartial-unification",             // Enable partial unification in type constructor inference
       "-Ywarn-dead-code",                  // Warn when dead code is identified.
       //     TODO 2.12.X
       //     "-Ywarn-extra-implicit",            // Warn when more than one implicit parameter section is defined.
-      "-Ywarn-inaccessible",               // Warn about inaccessible types in method signatures.
-      "-Ywarn-infer-any",                  // Warn when a type argument is inferred to be `Any`.
-      "-Ywarn-nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
-      "-Ywarn-nullary-unit",               // Warn when nullary methods return Unit.
+//      "-Ywarn-inaccessible",               // Warn about inaccessible types in method signatures.
+//      "-Ywarn-infer-any",                  // Warn when a type argument is inferred to be `Any`.
+//      "-Ywarn-nullary-override",           // Warn when non-nullary `def f()' overrides nullary `def f'.
+//      "-Ywarn-nullary-unit",               // Warn when nullary methods return Unit.
       //     TODO 2.12.X
       //     "-Ywarn-unused:implicits",           // Warn if an implicit parameter is unused.
       //     "-Ywarn-unused:imports",             // Warn if an import selector is not referenced.
@@ -90,7 +90,8 @@ object Settings {
       case PathList("META-INF", xs@_*) => MergeStrategy.discard
       case n if n.startsWith("reference.conf") => MergeStrategy.concat
       case _ => MergeStrategy.first
-    }
+    },
+    addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.11.1" cross CrossVersion.full),
   )
 
   lazy val day1Settings = Seq()
@@ -101,4 +102,15 @@ object Settings {
 
   lazy val day4Settings = Seq()
 
+  lazy val day5Settings = Seq()
+
+  lazy val day6Settings = Seq()
+
+  lazy val day7Settings = Seq()
+
+  lazy val day8Settings = Seq()
+
+  lazy val day9Settings = Seq()
+
+  lazy val dayNSettings = Seq()
 }

@@ -1,15 +1,15 @@
 package codekata2019.day3
 
-import cats.instances.all._
-import cats.syntax.all._
 import breeze.math._
-import cats.kernel.{CommutativeMonoid, CommutativeSemigroup, Monoid, Semigroup, Semilattice}
+import cats.instances.all._
+import cats.kernel.CommutativeSemigroup
+import cats.syntax.all._
 
 object Day3 {
   val dirMap: Map[Char, Complex] =
     Seq('U', 'L', 'D', 'R').scanLeft(('_', Complex.one)) { case ((_, d), c) => (c, d * i)}.tail.toMap
   val inputs =
-    in.lines.filter(_.trim.nonEmpty).map(_.split(',').map { a => dirMap(a.head) -> a.tail.toInt }).toList
+    in.linesIterator.filter(_.trim.nonEmpty).map(_.split(',').map { a => dirMap(a.head) -> a.tail.toInt }).toList
 
   val locs = inputs.map(_.foldLeft(Complex.zero, Seq(Seq.empty[Complex])) { case ((pos, paths), (dir, dist)) =>
     // new pos, add path to paths
@@ -44,7 +44,8 @@ object Day3 {
       }
     private val intersectionsToSummedMinPathLength = {
       val intersections = locsToFirstPathOccurance.map(_.keys.toSet).reduce(_.intersect(_))
-      locsToFirstPathOccurance.map(_.filterKeys(intersections)).combineAll
+//      locsToFirstPathOccurance.map(_.view.filterKeys(intersections)).combineAll
+      locsToFirstPathOccurance.map(_.view.filterKeys(intersections)).head
     }
     val solution = {
       (intersectionsToSummedMinPathLength.minBy(_._2)._2, intersectionsToSummedMinPathLength)
